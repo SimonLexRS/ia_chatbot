@@ -144,6 +144,19 @@ Este módulo implementa múltiples capas de seguridad:
 - Recomendamos configurar permisos de API con restricciones en OpenAI para limitar el uso.
 - Si va a contribuir al proyecto, asegúrese de no incluir credenciales o configuraciones locales en sus pull requests.
 
+## Demos
+Expandido
+![image](https://github.com/user-attachments/assets/9bd3fd54-9bc4-4d53-8371-99917fdff01a)
+
+Maximizado
+
+![image](https://github.com/user-attachments/assets/4a24877c-7623-4ae8-aa0a-5761a99f3402)
+
+Configuraciones
+
+![image](https://github.com/user-attachments/assets/3769f0e4-a2ba-4a63-b1d0-edf2d4496201)
+
+
 ## Solución de problemas
 
 ### El chatbot no aparece en la interfaz
