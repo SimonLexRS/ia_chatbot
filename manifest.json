@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2.0,
+  "id": "ia_chatbot",
+  "type": "module",
+  "namespace": "IaChatbot",
+  "name": "Zabbix IA",
+  "version": "1.2",
+  "author": "Simon Rodriguez",
+  "description": "Asistente de inteligencia artificial integrado que permite consultas en lenguaje natural sobre monitoreo, problemas y configuración de Zabbix",
+  "actions": {
+    "chat":         { "class": "ChatAction",            "view": "chat.view" },
+    "chat_message": { "class": "ChatMessageAction",     "layout": "layout.json" }
+  },
+  "assets": {
+    "js": ["lib/marked.min.js", "chat.js"],
+    "css": ["chat.css", "markdown.css"]
+  }
+}

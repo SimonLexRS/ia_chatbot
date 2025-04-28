@@ -1,0 +1,212 @@
+/* Estilos para Markdown en IA Chatbot */
+
+/* Estilos básicos para mensajes del bot */
+.bot-message {
+    line-height: 1.5;
+    font-size: 14px;
+    overflow-x: auto; /* Permitir scroll horizontal para tablas grandes */
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    hyphens: auto !important;
+}
+
+/* Asegurar que todo el contenido se ajuste dentro del contenedor */
+.bot-message * {
+    max-width: 100% !important; 
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+}
+
+/* Estilos para elementos Markdown */
+.bot-message h1, .bot-message h2, .bot-message h3, 
+.bot-message h4, .bot-message h5, .bot-message h6 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    line-height: 1.25;
+    overflow-wrap: break-word !important;
+}
+
+.bot-message h1 { font-size: 1.5em; }
+.bot-message h2 { font-size: 1.3em; }
+.bot-message h3 { font-size: 1.15em; }
+
+/* Párrafos */
+.bot-message p {
+    margin: 0.5em 0;
+}
+
+/* Listas */
+.bot-message ul, .bot-message ol {
+    margin: 0.5em 0;
+    padding-left: 2em;
+}
+
+.bot-message li {
+    margin: 0.2em 0;
+}
+
+/* Enlaces */
+.bot-message a {
+    color: #1976D2;
+    text-decoration: none;
+}
+
+.bot-message a:hover {
+    text-decoration: underline;
+}
+
+/* Bloques de código */
+.bot-message pre {
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    padding: 0.5em;
+    margin: 0.5em 0;
+    overflow: auto;
+    border: 1px solid #ddd;
+}
+
+.bot-message code {
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 0.9em;
+    background-color: rgba(27, 31, 35, 0.05);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+.bot-message pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+}
+
+/* Tablas - Estilos mejorados con mayor especificidad */
+.bot-message table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+    border: 2px solid #ddd;
+    display: table !important; /* Forzar display table */
+    max-width: 100%;
+    font-size: 0.9em;
+    table-layout: auto !important;
+}
+
+.bot-message table th,
+.bot-message table td {
+    border: 1px solid #ddd;
+    padding: 8px 13px;
+    text-align: left;
+    min-width: 80px; /* Ancho mínimo para celdas */
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+.bot-message table th {
+    background-color: #f6f8fa;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+.bot-message table tr:nth-child(2n) {
+    background-color: #f8f8f8;
+}
+
+.bot-message table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Contenedor de tabla con scroll - mejorado para garantizar scroll horizontal */
+.bot-message .table-container {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 1em 0;
+    display: block;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 4px;
+}
+
+/* Citas */
+.bot-message blockquote {
+    margin: 0.5em 0;
+    padding-left: 1em;
+    color: #6a737d;
+    border-left: 3px solid #ddd;
+}
+
+/* Líneas horizontales */
+.bot-message hr {
+    margin: 1em 0;
+    border: 0;
+    border-top: 1px solid #7a7e83;
+}
+
+/* Énfasis */
+.bot-message strong {
+    font-weight: 600;
+}
+
+.bot-message em {
+    font-style: italic;
+}
+
+/* Imágenes */
+.bot-message img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Modo oscuro para tablas y elementos markdown */
+#ia-chatbot-container.dark-mode .bot-message table {
+    border: 2px solid #666; /* Borde de tabla más claro y visible */
+    color: #ECECF1; /* Texto claro para modo oscuro */
+}
+
+#ia-chatbot-container.dark-mode .bot-message table th,
+#ia-chatbot-container.dark-mode .bot-message table td {
+    border: 1px solid #666; /* Bordes internos más claros */
+    color: #ECECF1;
+    background-color: #444654; /* Fondo oscuro para celdas */
+}
+
+#ia-chatbot-container.dark-mode .bot-message table th {
+    background-color: #343541; /* Cabecera ligeramente más oscura */
+    border-bottom: 2px solid #777; /* Línea inferior de cabecera más visible */
+}
+
+#ia-chatbot-container.dark-mode .bot-message table tr:nth-child(2n) {
+    background-color: #3c3c4c; /* Filas alternas ligeramente diferentes */
+}
+
+#ia-chatbot-container.dark-mode .bot-message table tr:hover {
+    background-color: #565767; /* Hover más claro */
+}
+
+/* Otros elementos markdown en modo oscuro */
+#ia-chatbot-container.dark-mode .bot-message a {
+    color: #63c0a0; /* Enlaces más visibles en modo oscuro */
+}
+
+#ia-chatbot-container.dark-mode .bot-message pre {
+    background-color: #2d2d2d;
+    border-color: #444;
+}
+
+#ia-chatbot-container.dark-mode .bot-message code {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+}
+
+#ia-chatbot-container.dark-mode .bot-message blockquote {
+    color: #aaa;
+    border-left-color: #555;
+}
+
+#ia-chatbot-container.dark-mode .bot-message hr {
+    border-top-color: #555;
+}

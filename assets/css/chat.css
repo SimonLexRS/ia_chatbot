@@ -1,0 +1,1299 @@
+/* Estilos para el chatbot de Zabbix */
+
+/* Contenedor principal */
+#ia-chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 380px;
+    height: 550px;
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    z-index: 10000;
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Tema oscuro para el contenedor principal */
+#ia-chatbot-container.dark-mode {
+    background: #343541;
+    border-color: #444654;
+    color: #ECECF1;
+}
+
+/* Encabezado del chat */
+#ia-chatbot-header {
+    cursor: pointer;
+    background: #4a4a4a; /* Color gris oscuro (anteriormente verde de ChatGPT) */
+    color: #ffffff;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.25s ease;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#ia-chatbot-logo-img {
+    height: 30px;
+    object-fit: contain;
+}
+
+/* Cuerpo del chat */
+#ia-chatbot-body {
+    flex: 1;
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    min-height: 0;
+}
+
+/* Tema oscuro para el cuerpo */
+#ia-chatbot-container.dark-mode #ia-chatbot-body {
+    background-color: #343541;
+}
+
+/* Área de mensajes */
+#ia-chatbot-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: block;
+    scrollbar-width: thin;
+    scrollbar-color: #d4d4d4 transparent;
+    min-height: 0;
+}
+
+#ia-chatbot-container.dark-mode #ia-chatbot-messages {
+    scrollbar-color: #555 transparent;
+}
+
+#ia-chatbot-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#ia-chatbot-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#ia-chatbot-messages::-webkit-scrollbar-thumb {
+    background-color: #d4d4d4;
+    border-radius: 6px;
+}
+
+#ia-chatbot-container.dark-mode #ia-chatbot-messages::-webkit-scrollbar-thumb {
+    background-color: #555;
+}
+
+/* Estilos de mensajes */
+.user-message, .bot-message {
+    max-width: 68%;
+    min-width: 32px;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 8px 0;
+    font-size: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    line-height: 1.5;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+    display: block;
+    width: auto;
+    border: none;
+    clear: both; /* Asegura que cada mensaje esté en su propia línea */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mensaje del usuario - alineado a la derecha */
+.user-message {
+    background: #4a4a4a !important;
+    color: white !important;
+    text-align: left !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    float: right !important;
+    box-shadow: 0 2px 8px rgba(74, 74, 74, 0.2) !important;
+    clear: both !important;
+}
+
+.dark-mode .user-message {
+    background: #5a5a5a !important;
+    color: white !important;
+    box-shadow: 0 2px 8px rgba(90, 90, 90, 0.3) !important;
+}
+
+/* Mensaje del bot - alineado a la izquierda */
+.bot-message {
+    background: #f0f0f0 !important;
+    color: #333 !important;
+    text-align: left !important;
+    margin-right: auto !important;
+    margin-left: 0 !important;
+    float: left !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+    clear: both !important;
+}
+
+.dark-mode .bot-message {
+    background: #444654 !important;
+    color: #ECECF1 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Contenido dentro de los mensajes del bot */
+.bot-message p, 
+.bot-message div, 
+.bot-message span {
+    margin-bottom: 8px;
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: normal !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.bot-message p:last-child {
+    margin-bottom: 0;
+}
+
+/* Formato para listas */
+.bot-message ul, 
+.bot-message ol {
+    padding-left: 20px;
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+}
+
+.bot-message li {
+    margin-bottom: 6px;
+    display: list-item;
+}
+
+/* Formato para encabezados */
+.bot-message h1, 
+.bot-message h2, 
+.bot-message h3, 
+.bot-message h4 {
+    margin-top: 16px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.bot-message h1 { font-size: 20px; }
+.bot-message h2 { font-size: 18px; }
+.bot-message h3 { font-size: 16px; }
+
+/* Código */
+.bot-message code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.dark-mode .bot-message code {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0 !important;
+}
+
+.bot-message pre {
+    background-color: #f0f0f0;
+    padding: 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 10px 0;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.dark-mode .bot-message pre {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #444 !important;
+}
+
+.bot-message pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+}
+
+/* Responsive images and tables in bot messages */
+.bot-message img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+.bot-message table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+.bot-message th,
+.bot-message td {
+    word-wrap: break-word;
+}
+
+/* Mensaje de error */
+.bot-message.error {
+    background-color: #fef2f2 !important;
+    color: #b91c1c !important;
+    border-left: 4px solid #f87171 !important;
+}
+
+.dark-mode .bot-message.error {
+    background-color: #301a1a !important;
+    color: #ef5350 !important;
+    border-left: 4px solid #b71c1c !important;
+}
+
+/* Indicador de escritura */
+.typing-indicator {
+    background-color: #f0f0f0 !important;
+    color: #555 !important;
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    width: auto;
+    max-width: 140px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.dark-mode .typing-indicator {
+    background-color: #444654 !important;
+    color: #b0b0b0 !important;
+}
+
+.typing-indicator span.dot {
+    animation: blink 1.4s infinite both;
+    height: 5px;
+    width: 5px;
+    background: #4a4a4a !important;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 2px;
+}
+
+.dark-mode .typing-indicator span.dot {
+    background: #5a5a5a !important;
+}
+
+.typing-indicator span.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0% { opacity: 0.1; }
+    20% { opacity: 1; }
+    100% { opacity: 0.1; }
+}
+
+/* Área de entrada de texto */
+#ia-chatbot-input-area {
+    flex: 0 0 auto;
+    padding: 12px 16px 16px 16px;
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#ia-chatbot-container.dark-mode #ia-chatbot-input-area {
+    background-color: #343541;
+    border-top-color: #444654;
+}
+
+#ia-chatbot-input {
+    flex: 1;
+    padding: 12px 16px;
+    font-size: 15px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    resize: none;
+    min-height: 24px;
+    max-height: 120px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    line-height: 1.5;
+    overflow-y: auto;
+    background-color: #fff;
+    color: #333;
+}
+
+#ia-chatbot-container.dark-mode #ia-chatbot-input {
+    background-color: #40414F !important;
+    border-color: #555 !important;
+    color: #E3E3E3 !important;
+}
+
+#ia-chatbot-input:focus {
+    border-color: #4a4a4a;
+    box-shadow: 0 0 0 2px rgba(74, 74, 74, 0.2);
+    outline: none;
+}
+
+#ia-chatbot-container.dark-mode #ia-chatbot-input:focus {
+    border-color: #5a5a5a !important;
+    box-shadow: 0 0 0 2px rgba(90, 90, 90, 0.4) !important;
+}
+
+/* Botones */
+#ia-chatbot-send {
+    height: 40px;
+    min-width: 40px;
+    background: #4a4a4a;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    background: #4a4a4a !important;
+}
+
+#ia-chatbot-send:hover {
+    background: #333333;
+    background: #333333 !important;
+}
+
+#ia-chatbot-send:disabled {
+    background: #9ca3af !important;
+    cursor: not-allowed;
+}
+
+#ia-chatbot-clear {
+    height: 40px;
+    min-width: 40px;
+    background: #f44336;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    background: #D32F2F !important;
+}
+
+#ia-chatbot-clear:hover {
+    background: #d32f2f;
+    background: #b71c1c !important;
+}
+
+/* Controles y botones de la barra superior */
+#ia-chatbot-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#ia-chatbot-controls button {
+    background: transparent;
+    border: none;
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    margin-left: 10px;
+    color: white;
+    border-radius: 4px;
+}
+
+#ia-chatbot-controls button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#ia-chatbot-toggle-img,
+#ia-chatbot-expand-img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Footer */
+#ia-chatbot-footer {
+    flex: 0 0 auto;
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    padding: 6px;
+    border-top: 1px solid #f0f0f0;
+    background-color: #ffffff;
+}
+
+#ia-chatbot-container.dark-mode #ia-chatbot-footer {
+    background-color: #343541;
+    color: #AAAAAA;
+    border-top-color: #444654;
+}
+
+/* Estados del chatbot */
+#ia-chatbot-container.maximized {
+    width: 380px;
+    height: 650px;
+}
+
+#ia-chatbot-container.expanded {
+    width: 80vw;
+    max-width: 80vw;
+    height: 80vh;
+    bottom: 10vh;
+    right: 10vw;
+}
+
+#ia-chatbot-container.minimized {
+    width: 210px;
+    height: 45px !important;
+    min-height: 45px;
+    max-height: 45px;
+    overflow: hidden;
+}
+
+#ia-chatbot-container.minimized #ia-chatbot-body {
+    display: none;
+}
+
+#ia-chatbot-container.minimized #ia-chatbot-logo-img {
+    height: 25px !important;
+    min-height: 25px;
+    transition: height 0.2s ease;
+}
+
+#ia-chatbot-container.minimized #ia-chatbot-header {
+    height: 45px !important;
+    min-height: 45px;
+    max-height: 45px;
+    transition: height 0.2s ease;
+}
+
+/* Minimized mode: only show maximize and close buttons */
+#ia-chatbot-container.minimized #ia-chatbot-controls button:not(#ia-chatbot-toggle):not(#ia-chatbot-close) {
+    display: none;
+}
+
+#ia-chatbot-container.hidden {
+    display: none !important;
+}
+
+/* Modal de configuración mejorado */
+#ia-chatbot-config-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+#ia-chatbot-config-modal {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 550px;
+    z-index: 10002;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: modalAppear 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode #ia-chatbot-config-modal {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border-color: #444;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+#ia-chatbot-config-modal h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    color: #2c3e50;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode #ia-chatbot-config-modal h2 {
+    color: #f0f0f0;
+}
+
+#ia-chatbot-config-modal p {
+    color: #444;
+    line-height: 1.5;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode #ia-chatbot-config-modal p {
+    color: #d0d0d0;
+}
+
+/* Pestañas de navegación - Estilo mejorado tipo ChatGPT */
+.ia-chatbot-tabs {
+    display: flex;
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+    align-items: center; /* Alinea elementos verticalmente */
+}
+
+.ia-chatbot-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode .ia-chatbot-tabs {
+    border-bottom-color: #444;
+}
+
+.ia-chatbot-tab-btn {
+    padding: 15px 20px; /* Aumentado el padding vertical para más espacio */
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 500;
+    color: #666;
+    font-size: 15px; /* Aumentado tamaño de letra */
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex: 1;
+    text-align: center;
+    position: relative;
+    height: 50px; /* Altura fija para todos los botones */
+    display: flex;
+    align-items: center; /* Centra texto verticalmente */
+    justify-content: center; /* Centra texto horizontalmente */
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode .ia-chatbot-tab-btn {
+    color: #ccc;
+}
+
+.ia-chatbot-tab-btn:hover {
+    color: #10a37f;
+    background-color: rgba(16, 163, 127, 0.05);
+}
+
+.dark-mode .ia-chatbot-tab-btn:hover {
+    color: #16c79a;
+}
+
+.ia-chatbot-tab-btn.active {
+    color: #10a37f;
+    font-weight: 600;
+}
+
+.ia-chatbot-tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #10a37f;
+    border-radius: 3px 3px 0 0;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode .ia-chatbot-tab-btn.active {
+    color: #16c79a;
+    border-bottom-color: #16c79a;
+}
+
+.dark-mode .ia-chatbot-tab-btn.active::after {
+    background: #16c79a;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode .ia-chatbot-tab-btn.active:after {
+    background-color: #16c79a;
+}
+
+.ia-chatbot-tab-pane {
+    display: none;
+    padding: 10px 0;
+}
+
+.ia-chatbot-tab-pane.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Contenido de pestañas */
+.ia-chatbot-tab-pane {
+    display: none;
+    padding: 5px 0 15px;
+}
+
+.ia-chatbot-tab-pane.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Formularios */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode .form-group label {
+    color: #e0e0e0;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: #fff;
+    color: #333;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode .form-control {
+    background: #40414F;
+    color: #f0f0f0;
+    border-color: #555;
+}
+
+.form-control:focus {
+    border-color: #10a37f;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(16, 163, 127, 0.2);
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode .form-control:focus {
+    box-shadow: 0 0 0 2px rgba(22, 199, 154, 0.4);
+    border-color: #16c79a;
+}
+
+/* Mejorar la visibilidad del valor seleccionado en los selectores desplegables */
+select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 10px 35px 10px 12px; /* Aumentado padding derecho para dejar espacio al ícono */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%2310a37f" d="M6 8.5l-4-4 1-1 3 3 3-3 1 1z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+    cursor: pointer;
+    color: #333 !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    text-overflow: ellipsis;
+    position: relative;
+    height: 35px !important; /* Estableciendo altura fija de 35px */
+    z-index: 1;
+}
+
+.dark-mode select.form-control {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%2316c79a" d="M6 8.5l-4-4 1-1 3 3 3-3 1 1z"/></svg>');
+    color: #f0f0f0 !important;
+}
+
+/* Estilos para selectores desplegables */
+.ia-chatbot-select-container {
+    margin: 8px 0;
+    width: 100%;
+}
+
+.ia-chatbot-select {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ia-chatbot-select:focus {
+    border-color: #10a37f;
+    box-shadow: 0 0 0 2px rgba(16, 163, 127, 0.2);
+    outline: none;
+}
+
+.dark-mode .ia-chatbot-select {
+    background-color: #40414F;
+    border-color: #555;
+    color: #E3E3E3;
+}
+
+.dark-mode .ia-chatbot-select:focus {
+    border-color: #10A37F;
+    box-shadow: 0 0 0 2px rgba(16, 163, 127, 0.4);
+}
+
+.ia-chatbot-select option {
+    padding: 8px;
+}
+
+.dark-mode .ia-chatbot-select option {
+    background-color: #40414F;
+    color: #E3E3E3;
+}
+
+/* Estilos para el elemento pre-seleccionado */
+.ia-chatbot-preselected {
+    font-weight: 500;
+    color: #10a37f;
+    background-color: rgba(16, 163, 127, 0.1);
+    padding: 2px 5px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 2px 0;
+}
+
+.dark-mode .ia-chatbot-preselected {
+    color: #16c79a;
+    background-color: rgba(22, 199, 154, 0.2);
+}
+
+/* Estilos para botones dentro de los mensajes del bot */
+.bot-message button {
+    background-color: #10a37f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 8px 4px 8px 0;
+    transition: background-color 0.2s ease;
+}
+
+.bot-message button:hover {
+    background-color: #0d8a6c;
+}
+
+.dark-mode .bot-message button {
+    background-color: #16c79a;
+}
+
+.dark-mode .bot-message button:hover {
+    background-color: #14b389;
+}
+
+/* Estilos para mostrar correctamente el texto seleccionado en los selectores */
+select.form-control.selection-active {
+    font-weight: 500;
+    color: #333 !important;
+}
+
+.dark-mode select.form-control.selection-active {
+    color: #f0f0f0 !important;
+}
+
+/* Usar el pseudo-elemento para mostrar el texto seleccionado cuando sea necesario */
+select.form-control.selection-active[data-selected-text]::after {
+    content: attr(data-selected-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 35px); /* Espacio para el icono */
+    height: 100%;
+    padding: 10px 12px;
+    pointer-events: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+/* Mejora para asegurar que las opciones del selector siempre sean visibles */
+.modal-body select.form-control {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-width: 100%;
+}
+
+.dark-mode .modal-body select.form-control {
+    background-color: #40414F;
+    border: 1px solid #565869;
+}
+
+/* Asegurar que el selector desplegable tenga suficiente altura */
+.modal-body .form-group select.form-control {
+    min-height: 38px;
+    line-height: 1.5;
+}
+
+/* Mejorar la visualización del valor seleccionado actual */
+select.form-control:not([size]):not([multiple]) {
+    text-align: left;
+    text-align-last: left;
+}
+
+/* Asegurar que la opción seleccionada siempre tenga un texto visible */
+select.form-control option {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    font-weight: normal;
+    min-height: 24px;
+    line-height: 24px;
+}
+
+.dark-mode select.form-control option {
+    background-color: #40414F;
+    color: #f0f0f0;
+}
+
+/* Destacar opción seleccionada en el dropdown */
+select.form-control option:checked,
+select.form-control option:hover,
+select.form-control option:focus {
+    background-color: #e6f7f4;
+    background: linear-gradient(#10a37f, #10a37f);
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.dark-mode select.form-control option:checked,
+.dark-mode select.form-control option:hover,
+.dark-mode select.form-control option:focus {
+    background-color: #1a3f38;
+    color: #16c79a;
+}
+
+/* Mejora para forzar visualización del texto */
+select:invalid,
+select option[value=""] {
+    color: #888 !important;
+}
+
+/* Correciones para Firefox */
+@-moz-document url-prefix() {
+    select.form-control {
+        color: #333 !important;
+        text-indent: 0;
+    }
+    .dark-mode select.form-control {
+        color: #f0f0f0 !important;
+    }
+}
+
+/* Campo API Key con botón toggle */
+.input-with-button {
+    display: flex;
+    position: relative;
+}
+
+.input-with-button input {
+    flex-grow: 1;
+    padding-right: 40px;
+}
+
+.input-with-button button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 40px;
+    background: transparent;
+    border: none;
+    border-left: 1px solid #ddd;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode .input-with-button button {
+    border-left-color: #555;
+    color: #b0b0b0;
+}
+
+#ia-chatbot-api-key-display {
+    margin-top: 5px;
+    font-family: monospace;
+    color: #555;
+    background-color: #f5f5f5;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    word-break: break-all;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode #ia-chatbot-api-key-display {
+    background-color: #333;
+    color: #ccc;
+}
+
+/* Slider de temperatura */
+input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+    height: 6px;
+    background: #e1e1e1;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #10a37f;
+    cursor: pointer;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode input[type="range"] {
+    background: #444;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode input[type="range"]::-webkit-slider-thumb {
+    background: #16c79a;
+}
+
+.range-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode .range-labels {
+    color: #b0b0b0;
+}
+
+/* Botones del formulario - centrados */
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.ia-chatbot-modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode .ia-chatbot-modal-footer {
+    border-top-color: #444;
+}
+
+/* Texto de ayuda */
+.help-text {
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 5px;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode .help-text {
+    color: #b0b0b0;
+}
+
+/* Página "Acerca de" */
+.about-content {
+    text-align: center;
+    padding: 10px;
+}
+
+.about-content h3 {
+    margin-top: 0;
+    color: #10a37f;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode .about-content h3 {
+    color: #16c79a;
+}
+
+.about-content a {
+    color: #1976D2;
+    text-decoration: none;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode .about-content a {
+    color: #64b5f6;
+}
+
+.about-content a:hover {
+    text-decoration: underline;
+}
+
+/* Animación para el modal */
+@keyframes modalAppear {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilos para select y option en modo oscuro */
+#ia-chatbot-config-modal-overlay.dark-mode select,
+#ia-chatbot-config-modal-overlay.dark-mode option {
+    background-color: #40414F;
+    color: #f0f0f0;
+    border-color: #555;
+}
+
+#ia-chatbot-config-modal-overlay.dark-mode select:focus {
+    box-shadow: 0 0 0 2px rgba(22, 199, 154, 0.4);
+    border-color: #16c79a;
+}
+
+#ia-chatbot-container.dark-mode select,
+#ia-chatbot-container.dark-mode option {
+    background-color: #40414F;
+    color: #f0f0f0;
+    border-color: #555;
+}
+
+/* Estilos para los selectores de hosts */
+.host-selection-container {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.dark-mode .host-selection-container {
+    background-color: #444654;
+}
+
+.host-selector-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+.dark-mode .host-selector-label {
+    color: #ECECF1;
+}
+
+.host-selector {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.dark-mode .host-selector {
+    background-color: #2d2d2d;
+    border-color: #555;
+    color: #ECECF1;
+}
+
+.loading-indicator {
+    display: inline-block;
+    margin-left: 5px;
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Botón para solicitar información del host */
+.host-info-button {
+    background-color: #10a37f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.host-info-button:hover {
+    background-color: #0d8c6f;
+}
+
+.dark-mode .host-info-button {
+    background-color: #16c79a;
+}
+
+.dark-mode .host-info-button:hover {
+    background-color: #13b88c;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+    #ia-chatbot-container {
+        width: 100vw;
+        height: 100vh;
+        right: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+    
+    #ia-chatbot-container.expanded {
+        width: 100vw;
+        height: 100vh;
+        right: 0;
+        bottom: 0;
+        max-width: 100vw;
+    }
+    
+    #ia-chatbot-header {
+        border-radius: 0;
+    }
+    
+    #ia-chatbot-config-modal {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .ia-chatbot-tab-btn {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+}
+
+/* Elementos promocionales */
+.ia-promo-banner {
+    background: linear-gradient(135deg, #2980b9, #1a5276);
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+    padding: 10px 15px;
+    font-size: 14px;
+    position: relative;
+    margin-bottom: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    display: block !important; /* Forzar visibilidad */
+    z-index: 10001; /* Asegurar que está por encima de otros elementos */
+}
+
+.promo-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.version-tag {
+    background-color: rgba(255,255,255,0.2);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.promo-content p {
+    margin: 5px 0;
+    flex: 1;
+    font-size: 13px;
+}
+
+.promo-content a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.promo-close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+    margin-left: 10px;
+}
+
+.upgrade-link {
+    color: #2980b9;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.upgrade-link:hover {
+    color: #1a5276;
+    text-decoration: underline;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 768px) {
+    .promo-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .version-tag {
+        margin-bottom: 5px;
+    }
+}
