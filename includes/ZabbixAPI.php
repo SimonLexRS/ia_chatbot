@@ -15,7 +15,6 @@ class ZabbixAPI {
      * 
      * @param string $api_url URL de la API de Zabbix
      */
-    // Utilizar siempre variables globales de Zabbix en lugar de hardcodear
     public function __construct($api_url = null) {
         // Si no se proporciona URL, usar la misma instancia de Zabbix
         if ($api_url === null) {

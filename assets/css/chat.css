@@ -1,4 +1,4 @@
-/* Estilos para el chatbot de Zabbix */
+/* Estilos principales para Zabbix IA Chatbot - Estilo moderno tipo ChatGPT */
 
 /* Contenedor principal */
 #ia-chatbot-container {
@@ -1219,81 +1219,5 @@ input[type="range"]::-webkit-slider-thumb {
     .ia-chatbot-tab-btn {
         padding: 10px 15px;
         font-size: 0.9em;
-    }
-}
-
-/* Elementos promocionales */
-.ia-promo-banner {
-    background: linear-gradient(135deg, #2980b9, #1a5276);
-    color: #fff;
-    border-radius: 5px 5px 0 0;
-    padding: 10px 15px;
-    font-size: 14px;
-    position: relative;
-    margin-bottom: 2px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    display: block !important; /* Forzar visibilidad */
-    z-index: 10001; /* Asegurar que está por encima de otros elementos */
-}
-
-.promo-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.version-tag {
-    background-color: rgba(255,255,255,0.2);
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.promo-content p {
-    margin: 5px 0;
-    flex: 1;
-    font-size: 13px;
-}
-
-.promo-content a {
-    color: #fff;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.promo-close-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 0 5px;
-    margin-left: 10px;
-}
-
-.upgrade-link {
-    color: #2980b9;
-    font-weight: bold;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.upgrade-link:hover {
-    color: #1a5276;
-    text-decoration: underline;
-}
-
-/* Adaptación para pantallas pequeñas */
-@media (max-width: 768px) {
-    .promo-content {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .version-tag {
-        margin-bottom: 5px;
     }
 }

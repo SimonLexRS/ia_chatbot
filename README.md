@@ -1,27 +1,11 @@
-# Zabbix IA
+# IA Chatbot para Zabbix
 
-Un asistente virtual avanzado basado en inteligencia artificial para Zabbix que utiliza la API de OpenAI para proporcionar soporte y ayuda contextual a los usuarios. Este módulo permite interactuar con un chatbot inteligente directamente desde la interfaz de Zabbix para obtener respuestas sobre monitoreo, alertas y administración del sistema.
+Un módulo de asistente virtual basado en IA para Zabbix que utiliza la API de OpenAI para proporcionar soporte y ayuda contextual a los usuarios. Este módulo permite interactuar con un chatbot inteligente directamente desde la interfaz de Zabbix para obtener respuestas sobre monitoreo, alertas y administración del sistema.
 
-## Versiones Disponibles
-
-| Característica | Versión Gratuita | Versión PRO | Versión Enterprise |
-|----------------|------------------|-------------|-------------------|
-| Chat con IA básico | ✅ | ✅ | ✅ |
-| Integración nativa con Zabbix | ✅ | ✅ | ✅ |
-| Markdown en respuestas | ✅ | ✅ | ✅ |
-| Historial básico | ✅ | ✅ | ✅ |
-| Personalización avanzada | ❌ | ✅ | ✅ |
-| Integración profunda con hosts | ❌ | ✅ | ✅ |
-| Análisis de problemas inteligente | ❌ | ✅ | ✅ |
-| Respuesta automatizada a incidentes | ❌ | ❌ | ✅ |
-| Soporte técnico prioritario | ❌ | ✅ | ✅ |
-| Entrenamiento personalizado | ❌ | ❌ | ✅ |
-| Despliegue On-Premise sin conexión | ❌ | ❌ | ✅ |
-| Multi-lenguaje avanzado | ❌ | ✅ | ✅ |
-| Dashboard de análisis de uso | ❌ | ✅ | ✅ |
-| Actualizaciones garantizadas | ❌ | ✅ | ✅ |
-
-**[🚀 Adquiera la versión PRO ahora](https://elitech-solutions.com/pro)** | **[🌟 Conozca las ventajas Enterprise](https://elitech-solutions.com/enterprise)**
+## Actualizaciones
+- Mejoras en la integracion con OpenAI y OLLAMA
+- Seleccion dinamica de modelos de LLM
+- Mejoras en la estabilidad y rendimiento
 
 ## Características
 
@@ -52,7 +36,7 @@ Un asistente virtual avanzado basado en inteligencia artificial para Zabbix que 
 
    ```bash
    cd /usr/share/zabbix/ui/modules/
-   gh repo clone SimonLexRS/ia_chatbot
+   git clone https://github.com/tu-usuario/ia_chatbot.git
    ```
 
    O si descargó el ZIP:
@@ -61,8 +45,6 @@ Un asistente virtual avanzado basado en inteligencia artificial para Zabbix que 
    cd /usr/share/zabbix/ui/modules/
    unzip ia_chatbot.zip -d .
    ```
-
-   **¿Interesado en la versión PRO o Enterprise?** [Contacte con nuestro equipo comercial](https://elitech-solutions.com/contacto) para obtener instrucciones de instalación específicas y claves de licencia.
 
 2. **Configurar permisos**
 
@@ -84,7 +66,6 @@ Un asistente virtual avanzado basado en inteligencia artificial para Zabbix que 
    - Regístrese o inicie sesión en [OpenAI Platform](https://platform.openai.com/)
    - Vaya a la sección de [API Keys](https://platform.openai.com/api-keys)
    - Cree una nueva API Key y copie el valor
-   - IMPORTANTE: Nunca comparta su API Key ni la incluya en código público
 
 5. **Configurar el módulo**
 
@@ -130,19 +111,9 @@ Este módulo implementa múltiples capas de seguridad:
 - Sanitización de respuestas para prevenir XSS
 - Verificación SSL en las comunicaciones con OpenAI
 - Rate limiting para prevenir abusos
-- Almacenamiento seguro de la API Key en el navegador del usuario (encriptada localmente)
+- Almacenamiento seguro de la API Key en el navegador del usuario
 - Verificación de autenticación de usuarios
 - Detección de contenido potencialmente malicioso
-- No se almacenan API Keys en el servidor o en el repositorio
-- Ninguna credencial o API Key está incluida en el código fuente
-
-### Consideraciones importantes para la seguridad
-
-- Las claves API de OpenAI son secretas y valiosas. Nunca deben compartirse.
-- Este módulo no incluye ninguna clave API predeterminada y cada usuario debe configurar la suya.
-- La clave API se almacena solo en el navegador local del usuario y nunca se transfiere al servidor excepto durante las llamadas API.
-- Recomendamos configurar permisos de API con restricciones en OpenAI para limitar el uso.
-- Si va a contribuir al proyecto, asegúrese de no incluir credenciales o configuraciones locales en sus pull requests.
 
 ## Solución de problemas
 
@@ -174,7 +145,7 @@ Este módulo se distribuye bajo la licencia [MIT](LICENSE).
 
 ## Autor
 
-Desarrollado por [Simon Rodriguez](https://github.com/SimonLexRS)
+Desarrollado por [Tu Nombre](https://github.com/tu-usuario)
 
 ---
 
